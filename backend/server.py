@@ -308,6 +308,9 @@ async def start_auction(room_code: str):
 # Include the router in the main app
 app.include_router(api_router)
 
+# Create Socket.IO ASGI app after routes are included
+socket_app = socketio.ASGIApp(sio, app)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
