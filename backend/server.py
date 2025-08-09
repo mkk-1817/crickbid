@@ -271,7 +271,7 @@ async def create_room():
 
 @api_router.get("/room/{room_code}")
 async def get_room(room_code: str):
-    room_data = await db.rooms.find_one({"code": room_code})
+    room_data = await db.rooms.find_one({"code": room_code}, {"_id": 0})
     if not room_data:
         return {"error": "Room not found"}
     
