@@ -179,12 +179,12 @@ class CricketAuctionTester:
         """Test Socket.io connection"""
         print(f"\n🔍 Testing Socket.io Connection...")
         try:
-            # Create a synchronous socket client
+            # Create a synchronous socket client with polling transport only
             sio = socketio.SimpleClient()
             
             # Connect to the server
             print(f"   Connecting to: {self.base_url}")
-            sio.connect(self.base_url, transports=['websocket', 'polling'])
+            sio.connect(self.base_url, transports=['polling'])
             print("✅ Socket.io connection successful")
             
             # Test join_room event
