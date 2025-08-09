@@ -284,7 +284,7 @@ async def get_players():
 
 @api_router.post("/room/{room_code}/start")
 async def start_auction(room_code: str):
-    room_data = await db.rooms.find_one({"code": room_code})
+    room_data = await db.rooms.find_one({"code": room_code}, {"_id": 0})
     if not room_data:
         return {"error": "Room not found"}
     
@@ -295,7 +295,7 @@ async def start_auction(room_code: str):
     )
     
     # Get first player
-    players = await db.players.find().to_list(1000)
+    players = await db.players.find({}, {"_id": 0}).to_list(1000)
     if players:
         first_player = players[0]
         await sio.emit('auction_started', {
