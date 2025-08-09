@@ -170,7 +170,7 @@ async def join_room(sid, data):
     team_name = data.get('team_name')
     
     # Find room by code
-    room_data = await db.rooms.find_one({"code": room_code})
+    room_data = await db.rooms.find_one({"code": room_code}, {"_id": 0})
     if not room_data:
         await sio.emit('error', {'message': 'Room not found'}, to=sid)
         return
