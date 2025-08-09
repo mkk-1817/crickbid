@@ -110,7 +110,7 @@ async def init_players_db():
     
     # Add more players to reach 200
     additional_players = []
-    for i in range(150):
+    for i in range(148):  # 26 Indian + 26 International + 148 Additional = 200
         roles = ["batsman", "bowler", "all-rounder", "wicket-keeper"]
         countries = ["India", "England", "Australia", "South Africa", "New Zealand", "Pakistan", "West Indies", "Sri Lanka", "Bangladesh", "Afghanistan"]
         
