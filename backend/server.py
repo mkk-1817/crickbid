@@ -334,5 +334,5 @@ async def startup_event():
 async def shutdown_db_client():
     client.close()
 
-# Don't mount socket app at root - it conflicts with FastAPI routes
-# Instead, we'll use the socket_app directly as the main app
+# Export the socket_app as the main application
+# This allows both FastAPI routes and Socket.io to work together
