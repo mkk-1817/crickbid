@@ -279,7 +279,7 @@ async def get_room(room_code: str):
 
 @api_router.get("/players")
 async def get_players():
-    players = await db.players.find().to_list(1000)
+    players = await db.players.find({}, {"_id": 0}).to_list(1000)
     return players
 
 @api_router.post("/room/{room_code}/start")
