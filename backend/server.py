@@ -250,6 +250,10 @@ async def place_bid(sid, data):
     }, room=room_code)
 
 # API Routes
+@api_router.get("/")
+async def health_check():
+    return {"status": "healthy", "message": "Cricket Auction API is running"}
+
 @api_router.post("/room/create")
 async def create_room():
     # Generate 6-digit code
