@@ -32,9 +32,6 @@ sio = socketio.AsyncServer(
 # Create the main app
 app = FastAPI()
 
-# Create Socket.IO ASGI app
-socket_app = socketio.ASGIApp(sio, app)
-
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
