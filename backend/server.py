@@ -256,7 +256,7 @@ async def create_room():
     code = str(random.randint(100000, 999999))
     
     # Get all players for auction
-    all_players = await db.players.find().to_list(1000)
+    all_players = await db.players.find({}, {"_id": 0}).to_list(1000)
     player_ids = [player["id"] for player in all_players]
     
     room = Room(
