@@ -206,7 +206,7 @@ async def place_bid(sid, data):
     room_code = data.get('room_code')
     bid_amount = data.get('bid_amount')
     
-    room_data = await db.rooms.find_one({"code": room_code})
+    room_data = await db.rooms.find_one({"code": room_code}, {"_id": 0})
     if not room_data:
         return
     
